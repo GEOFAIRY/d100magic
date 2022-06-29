@@ -42,9 +42,9 @@ const changeDiceCheckAP = function ({ diceCheck, mastery }: any) {
 };
 
 const updateAll = function () {
-    damageRoll.value?.changeDiceCheck(0);
-    damageFlat.value?.changeDiceCheck(0);
-    aP.value?.changeDiceCheck(0);
+    !damageRollBool ? damageRoll.value?.changeDiceCheck(0) : false
+    !damageFlatBool ? damageFlat.value?.changeDiceCheck(0) : false
+    !aPBool ? aP.value?.changeDiceCheck(0) : false
 };
 </script>
 
