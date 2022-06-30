@@ -18,7 +18,7 @@ const diceCheckModifierFlat = ref(0);
 const diceCheckModifierAP = ref(0);
 
 const changeDiceCheckRoll = function ({ diceCheck, mastery }: any) {
-    if (mastery.value === masteryLevel.value) {
+    if (mastery.value <= masteryLevel.value) {
         diceCheckModifierRoll.value = diceCheck / 2;
     } else {
         diceCheckModifierRoll.value = diceCheck;
@@ -26,7 +26,7 @@ const changeDiceCheckRoll = function ({ diceCheck, mastery }: any) {
 };
 
 const changeDiceCheckFlat = function ({ diceCheck, mastery }: any) {
-    if (mastery.value === masteryLevel.value) {
+    if (mastery.value <= masteryLevel.value) {
         diceCheckModifierFlat.value = diceCheck / 2;
     } else {
         diceCheckModifierFlat.value = diceCheck;
@@ -34,7 +34,7 @@ const changeDiceCheckFlat = function ({ diceCheck, mastery }: any) {
 };
 
 const changeDiceCheckAP = function ({ diceCheck, mastery }: any) {
-    if (mastery.value === masteryLevel.value) {
+    if (mastery.value <= masteryLevel.value) {
         diceCheckModifierAP.value = diceCheck / 2;
     } else {
         diceCheckModifierAP.value = diceCheck;
