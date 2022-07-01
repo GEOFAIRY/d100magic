@@ -16,7 +16,8 @@ const changeDiceCheck = function(diceCheckUpdate:any = undefined) {
     diceCheckUpdate !== undefined ? diceCheck.value = diceCheckUpdate : false
     emits("changeDiceCheckRoll", {
         diceCheck: diceCheck.value,
-        mastery: masteryLevelSelected
+        mastery: masteryLevelSelected,
+        emitter: "Roll"
     });
 };
 

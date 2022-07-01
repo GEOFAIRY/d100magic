@@ -17,52 +17,38 @@ const diceCheckModifierAP = ref(0);
 
 const total = ref(0);
 
-const emits = defineEmits([
-    "totalUpdate"
-])
-
+const emits = defineEmits(["totalUpdate"]);
 
 // methods
-const changeDiceCheckRoll = function ({ diceCheck, mastery }: any) {
+const changeDiceCheck = function ({ diceCheck, mastery, emitter }: any) {
     if (mastery.value <= masteryLevel.value) {
-        diceCheckModifierRoll.value = diceCheck / 2;
-    } else {
-        diceCheckModifierRoll.value = diceCheck;
+        diceCheck = diceCheck / 2;
     }
-    total.value = Math.ceil(
-        diceCheckModifierRoll.value +
-            diceCheckModifierFlat.value +
-            diceCheckModifierAP.value
-    );
-    emits('totalUpdate', {totalInput: total.value, emmiter: "DamageDCSelector"})
-};
 
-const changeDiceCheckFlat = function ({ diceCheck, mastery }: any) {
-    if (mastery.value <= masteryLevel.value) {
-        diceCheckModifierFlat.value = diceCheck / 2;
-    } else {
-        diceCheckModifierFlat.value = diceCheck;
+    switch (emitter) {
+        case "Roll":
+            diceCheckModifierRoll.value = diceCheck;
+            break
+        case "Flat":
+            diceCheckModifierFlat.value = diceCheck;
+            break
+        case "AP":
+            diceCheckModifierAP.value = diceCheck;
+            break
+        default:
+            throw new Error("Unknown emiter type on DamageDCSelector")
+            break
     }
-    total.value = Math.ceil(
-        diceCheckModifierRoll.value +
-            diceCheckModifierFlat.value +
-            diceCheckModifierAP.value
-    );
-    emits('totalUpdate', {totalInput: total.value, emmiter: "DamageDCSelector"})
-};
 
-const changeDiceCheckAP = function ({ diceCheck, mastery }: any) {
-    if (mastery.value <= masteryLevel.value) {
-        diceCheckModifierAP.value = diceCheck / 2;
-    } else {
-        diceCheckModifierAP.value = diceCheck;
-    }
     total.value = Math.ceil(
         diceCheckModifierRoll.value +
             diceCheckModifierFlat.value +
             diceCheckModifierAP.value
     );
-    emits('totalUpdate', {totalInput: total.value, emmiter: "DamageDCSelector"})
+    emits("totalUpdate", {
+        totalInput: total.value,
+        emitter: "DamageDCSelector",
+    });
 };
 
 const updateAll = function () {
@@ -92,16 +78,16 @@ const updateAll = function () {
         </div>
         <div className="damage flex flex-col m-2">
             <DamageRoll
-                @changeDiceCheckRoll="changeDiceCheckRoll"
+                @changeDiceCheckRoll="changeDiceCheck"
                 ref="damageRoll"
             />
 
             <DamageFlat
-                @changeDiceCheckFlat="changeDiceCheckFlat"
+                @changeDiceCheckFlat="changeDiceCheck"
                 ref="damageFlat"
             />
 
-            <AP @changeDiceCheckAP="changeDiceCheckAP" ref="aP" />
+            <AP @changeDiceCheckAP="changeDiceCheck" ref="aP" />
         </div>
     </div>
 </template>

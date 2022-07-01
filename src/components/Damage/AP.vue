@@ -20,6 +20,7 @@ const changeDiceCheck = function (diceCheckUpdate: any = undefined) {
     emits("changeDiceCheckAP", {
         diceCheck: diceCheck.value,
         mastery: masteryLevelSelected,
+        emitter: "AP"
     });
 };
 

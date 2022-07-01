@@ -6,9 +6,8 @@ const totalDamageDC = ref(0);
 
 const total = ref(0);
 
-const totalUpdate = function ({ totalInput, emmiter }: any) {
-    console.log({ totalInput, emmiter });
-    switch (emmiter) {
+const totalUpdate = function ({ totalInput, emitter }: any) {
+    switch (emitter) {
         case "DamageDCSelector":
             totalDamageDC.value = totalInput;
             break;

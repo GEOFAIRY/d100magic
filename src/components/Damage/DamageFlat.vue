@@ -18,6 +18,7 @@ const changeDiceCheck = function (diceCheckUpdate:any = undefined) {
     emits("changeDiceCheckFlat", {
         diceCheck: diceCheck.value,
         mastery: masteryLevelSelected,
+        emitter: "Flat"
     });
 };
 
