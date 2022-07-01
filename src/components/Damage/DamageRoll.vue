@@ -26,12 +26,14 @@ defineExpose({
 </script>
 
 <template>
-    <label for="rollDamage">Damage Roll</label>
+    <label htmlFor="rollDamage" className="p-1">Damage Roll</label>
     <select
         name="rollDamage"
         id="rollDamage"
         v-model="diceCheck"
         @change="changeDiceCheckEvent($event)"
+        title="Select Damage Roll"
+        className="bg-navy-secondary p-1"
     >
         <option :value="Number(0)">-</option>
         <option :value="Math.ceil(dcRollScale * 1)">D10</option>

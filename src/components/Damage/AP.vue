@@ -7,15 +7,16 @@ const dcApScale = ref(0.75);
 const dcRollScale = ref(5);
 
 const diceCheck = ref(0);
-const masteryLevelSelected = ref()
+const masteryLevelSelected = ref();
 
 const changeDiceCheckEvent = function (event: any) {
-    masteryLevelSelected.value = Math.floor((event.target.selectedIndex - 1) / 3) + 1
-    changeDiceCheck()
-}
+    masteryLevelSelected.value =
+        Math.floor((event.target.selectedIndex - 1) / 3) + 1;
+    changeDiceCheck();
+};
 
-const changeDiceCheck = function (diceCheckUpdate:any = undefined) {
-    diceCheckUpdate !== undefined ? diceCheck.value = diceCheckUpdate : false
+const changeDiceCheck = function (diceCheckUpdate: any = undefined) {
+    diceCheckUpdate !== undefined ? (diceCheck.value = diceCheckUpdate) : false;
     emits("changeDiceCheckAP", {
         diceCheck: diceCheck.value,
         mastery: masteryLevelSelected,
@@ -23,17 +24,19 @@ const changeDiceCheck = function (diceCheckUpdate:any = undefined) {
 };
 
 defineExpose({
-    changeDiceCheck
-})
+    changeDiceCheck,
+});
 </script>
 
 <template>
-    <label for="rollDamage">AP</label>
+    <label htmlFor="apDamage" className="p-1">AP</label>
     <select
         name="rollDamage"
-        id="rollDamage"
+        id="apDamage"
         v-model="diceCheck"
         @change="changeDiceCheckEvent($event)"
+        title="Select AP Damage"
+        className="bg-navy-secondary p-1"
     >
         <option :value="Number(0)">-</option>
         <option v-for="i in 12" :value="Math.ceil(dcRollScale * i * dcApScale)">
