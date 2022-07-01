@@ -3,7 +3,6 @@ import { ref } from "vue";
 import DamageRoll from "./DamageRoll.vue";
 import DamageFlat from "./DamageFlat.vue";
 import AP from "./AP.vue";
-import { emit } from "process";
 
 const damageRoll = ref<InstanceType<typeof DamageRoll>>();
 const damageFlat = ref<InstanceType<typeof DamageFlat>>();
