@@ -51,9 +51,9 @@ const changeDiceCheck = function ({ diceCheck, mastery, emitter }: any) {
 };
 
 const updateAll = function () {
-    damageRoll.value?.changeDiceCheck(0);
-    damageFlat.value?.changeDiceCheck(0);
-    aP.value?.changeDiceCheck(0);
+    damageRoll.value?.changeDiceCheck();
+    damageFlat.value?.changeDiceCheck();
+    aP.value?.changeDiceCheck();
 };
 </script>
 

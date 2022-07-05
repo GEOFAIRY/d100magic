@@ -13,8 +13,7 @@ const changeDiceCheckEvent = function (event: any) {
     changeDiceCheck()
 }
 
-const changeDiceCheck = function (diceCheckUpdate:any = undefined) {
-    diceCheckUpdate !== undefined ? diceCheck.value = diceCheckUpdate : false
+const changeDiceCheck = function () {
     emits("changeDiceCheckFlat", {
         diceCheck: diceCheck.value,
         mastery: masteryLevelSelected,
